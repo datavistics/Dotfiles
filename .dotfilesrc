@@ -1,0 +1,4 @@
+[dotfiles]
+repository = ~/Dotfiles
+externals = {
+    'custom.js': '~/.jupyter/custom/custom.js'}
