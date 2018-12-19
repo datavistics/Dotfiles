@@ -1,5 +1,6 @@
 imap jj <Esc>
 imap kk <Esc>
+set scrolloff=6
 set surround
 let mapleader = " "
 map <leader>a :action $SelectAll<CR>
