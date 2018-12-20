@@ -2,6 +2,7 @@ imap jj <Esc>
 imap kk <Esc>
 set scrolloff=6
 set surround
+nnoremap Q @q
 let mapleader = " "
 map <leader>a :action $SelectAll<CR>
 map <leader>b :action GotoDeclaration<CR>
