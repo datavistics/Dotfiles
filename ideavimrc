@@ -1,8 +1,25 @@
+" Escape with jj and kk
 imap jj <Esc>
 imap kk <Esc>
+
+" Dont get stuck at the bottom!
 set scrolloff=6
-set surround
+
+" Search with ignore case, smart case, highlight results, incrementally
+" smart case ignores "ignore case" if we include uppercase characters
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+
+" enter clears search highlighting
+nnoremap <CR> :nohlsearch<cr> 
 nnoremap Q @q
+
+" Surround plugin
+set surround
+
+" Leader Keys
 let mapleader = " "
 map <leader>a :action $SelectAll<CR>
 map <leader>b :action GotoDeclaration<CR>
