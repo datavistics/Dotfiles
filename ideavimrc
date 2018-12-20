@@ -2,6 +2,7 @@
 imap jj <Esc>
 imap kk <Esc>
 
+" Change for oleg to see
 " Dont get stuck at the bottom!
 set scrolloff=6
 
