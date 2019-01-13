@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/dthomas/.oh-my-zsh"
@@ -119,3 +119,9 @@ function vi_mode_prompt_info() {
 # define right prompt, regardless of whether the theme defined it
 RPS1='$(vi_mode_prompt_info)'
 RPS2=$RPS1
+
+# For conda... may need adjusting
+. /Users/dthomas/anaconda3/etc/profile.d/conda.sh
+
+# For iterm
+source ~/.iterm2_shell_integration.zsh
