@@ -1,4 +1,8 @@
 [dotfiles]
-repository = ~/Dotfiles
 externals = {
     'custom.js': '~/.jupyter/custom/custom.js'}
+
+ignore = [
+     '.git',
+     '.gitignore',
+     '*.swp']

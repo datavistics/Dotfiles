@@ -120,8 +120,7 @@ function vi_mode_prompt_info() {
 RPS1='$(vi_mode_prompt_info)'
 RPS2=$RPS1
 
-# For conda... may need adjusting
-. /Users/dthomas/anaconda3/etc/profile.d/conda.sh
-
 # For iterm
 source ~/.iterm2_shell_integration.zsh
+
+PATH="$HOME/miniconda3/bin/:$PATH"
