@@ -2,8 +2,20 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/dthomas/.oh-my-zsh"
+export ZSH="/Users/derek/.oh-my-zsh"
 
+export s5="10.1.129.75"
+export s6="10.1.129.76"
+export s7="10.1.129.77"
+export s8="10.1.129.78"
+export s0="10.1.129.80"
+
+export l5="derek-thomas@10.1.129.75"
+export l6="derek-thomas@10.1.129.76"
+export l7="derek-thomas@10.1.129.77"
+export l8="derek-thomas@10.1.129.78"
+export l9="derek-thomas@10.1.129.79"
+export l0="derek-thomas@10.1.129.80"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -64,6 +76,7 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  fzf
   vi-mode
   fasd
 )
@@ -100,7 +113,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # https://superuser.com/questions/351499/how-to-switch-comfortably-to-vi-command-mode-on-the-zsh-command-line
-bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins 'jk' vi-cmd-mode
 export KEYTIMEOUT=20
 
 # http://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/
@@ -123,4 +136,7 @@ RPS2=$RPS1
 # For iterm
 source ~/.iterm2_shell_integration.zsh
 
-PATH="$HOME/miniconda3/bin/:$PATH"
+PATH="$HOME/anaconda3/bin/:$PATH"
+alias ll='ls -alF'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

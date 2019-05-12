@@ -1,6 +1,6 @@
-" Escape with jj and kk
-imap jj <Esc>
-imap kk <Esc>
+" Escape with jk
+imap jk <Esc>
+imap jk <Esc>
 
 " Change for oleg to see
 " Dont get stuck at the bottom!
