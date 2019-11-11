@@ -9,6 +9,7 @@ export s6="10.1.129.76"
 export s7="10.1.129.77"
 export s8="10.1.129.78"
 export s0="10.1.129.80"
+export s28="172.31.20.28"
 
 export l5="derek-thomas@10.1.129.75"
 export l6="derek-thomas@10.1.129.76"
@@ -16,6 +17,12 @@ export l7="derek-thomas@10.1.129.77"
 export l8="derek-thomas@10.1.129.78"
 export l9="derek-thomas@10.1.129.79"
 export l0="derek-thomas@10.1.129.80"
+export l1="derek-thomas@10.1.129.81"
+export l2="derek-thomas@10.1.129.82"
+export l3="developer@10.1.129.83"
+export l4="developer@10.1.129.84"
+export l28="dt1@172.31.20.28"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -140,3 +147,52 @@ PATH="$HOME/anaconda3/bin/:$PATH"
 alias ll='ls -alF'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/derek/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/derek/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/derek/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/derek/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+typeset -A key
+key=(
+  BackSpace  "${terminfo[kbs]}"
+    Home       "${terminfo[khome]}"
+      End        "${terminfo[kend]}"
+        Insert     "${terminfo[kich1]}"
+          Delete     "${terminfo[kdch1]}"
+            Up         "${terminfo[kcuu1]}"
+              Down       "${terminfo[kcud1]}"
+                Left       "${terminfo[kcub1]}"
+                  Right      "${terminfo[kcuf1]}"
+                    PageUp     "${terminfo[kpp]}"
+                      PageDown   "${terminfo[knp]}"
+                      
+)
+
+# Setup key accordingly
+[[ -n "${key[BackSpace]}"  ]] && bindkey "${key[BackSpace]}"
+# backward-delete-char
+[[ -n "${key[Home]}"       ]] && bindkey "${key[Home]}" beginning-of-line
+[[ -n "${key[End]}"        ]] && bindkey "${key[End]}" end-of-line
+[[ -n "${key[Insert]}"     ]] && bindkey "${key[Insert]}" overwrite-mode
+[[ -n "${key[Delete]}"     ]] && bindkey "${key[Delete]}" delete-char
+[[ -n "${key[Up]}"         ]] && bindkey "${key[Up]}"
+# up-line-or-beginning-search
+[[ -n "${key[Down]}"       ]] && bindkey "${key[Down]}"
+# down-line-or-beginning-search
+[[ -n "${key[PageUp]}"     ]] && bindkey "${key[PageUp]}"
+# beginning-of-buffer-or-history
+[[ -n "${key[PageDown]}"   ]] && bindkey "${key[PageDown]}"
+# end-of-buffer-or-history
+[[ -n "${key[Home]}"       ]] && bindkey -M vicmd "${key[Home]}"
+# beginning-of-line
+[[ -n "${key[End]}"        ]] && bindkey -M vicmd "${key[End]}" end-of-line

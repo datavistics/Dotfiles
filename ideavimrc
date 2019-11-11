@@ -1,6 +1,5 @@
 " Escape with jk
 imap jk <Esc>
-imap jk <Esc>
 
 " Change for oleg to see
 " Dont get stuck at the bottom!
@@ -19,6 +18,7 @@ nnoremap Q @q
 
 " Surround plugin
 set surround
+set multiple-cursors
 
 " Leader Keys
 let mapleader = " "
@@ -46,3 +46,8 @@ map <leader>x :action $Cut<CR>
 map <leader>y :action EditorDeleteLine<CR>
 map <leader>[ :action EditorCodeBlockStart<CR>
 map <leader>] :action EditorCodeBlockEnd<CR>
+
+# AutoComplete
+imap <C-n> <ESC>:action HippieCompletion<CR>a
+imap <C-p> <ESC>:action HippieBackwardCompletion<CR>a
+set ideajoin
