@@ -1,8 +1,9 @@
 [dotfiles]
 externals = {
-    'custom.js': '~/.jupyter/custom/custom.js'}
+    'custom.js': '~/.jupyter/custom'}
 
 ignore = [
+     '.idea',
      '.git',
      '.gitignore',
      '*.swp']
