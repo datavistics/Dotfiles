@@ -6,6 +6,12 @@ externals = {
 
 ignore = [
      '.idea/*',
+     '.idea',
+     '.idea/',
+     '..idea/*',
+     '..idea',
+     '..idea/',
+     '..dotfilesrc',
      '.git',
      '.gitignore',
      '*.swp']

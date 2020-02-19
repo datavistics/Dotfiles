@@ -10,6 +10,7 @@ export s7="10.1.129.77"
 export s8="10.1.129.78"
 export s0="10.1.129.80"
 export s28="172.31.20.28"
+export s126="172.31.20.126"
 
 export l5="derek-thomas@10.1.129.75"
 export l6="derek-thomas@10.1.129.76"
@@ -22,6 +23,7 @@ export l2="derek-thomas@10.1.129.82"
 export l3="developer@10.1.129.83"
 export l4="developer@10.1.129.84"
 export l28="dt1@172.31.20.28"
+export l126="dt1@172.31.20.126"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -161,38 +163,66 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
-typeset -A key
-key=(
-  BackSpace  "${terminfo[kbs]}"
-    Home       "${terminfo[khome]}"
-      End        "${terminfo[kend]}"
-        Insert     "${terminfo[kich1]}"
-          Delete     "${terminfo[kdch1]}"
-            Up         "${terminfo[kcuu1]}"
-              Down       "${terminfo[kcud1]}"
-                Left       "${terminfo[kcub1]}"
-                  Right      "${terminfo[kcuf1]}"
-                    PageUp     "${terminfo[kpp]}"
-                      PageDown   "${terminfo[knp]}"
-                      
-)
 
-# Setup key accordingly
-[[ -n "${key[BackSpace]}"  ]] && bindkey "${key[BackSpace]}"
-# backward-delete-char
-[[ -n "${key[Home]}"       ]] && bindkey "${key[Home]}" beginning-of-line
-[[ -n "${key[End]}"        ]] && bindkey "${key[End]}" end-of-line
-[[ -n "${key[Insert]}"     ]] && bindkey "${key[Insert]}" overwrite-mode
-[[ -n "${key[Delete]}"     ]] && bindkey "${key[Delete]}" delete-char
-[[ -n "${key[Up]}"         ]] && bindkey "${key[Up]}"
-# up-line-or-beginning-search
-[[ -n "${key[Down]}"       ]] && bindkey "${key[Down]}"
-# down-line-or-beginning-search
-[[ -n "${key[PageUp]}"     ]] && bindkey "${key[PageUp]}"
-# beginning-of-buffer-or-history
-[[ -n "${key[PageDown]}"   ]] && bindkey "${key[PageDown]}"
-# end-of-buffer-or-history
-[[ -n "${key[Home]}"       ]] && bindkey -M vicmd "${key[Home]}"
-# beginning-of-line
-[[ -n "${key[End]}"        ]] && bindkey -M vicmd "${key[End]}" end-of-line
+# https://github.com/mkomitee/dotfiles/blob/master/zsh/key-bindings.zsh
+typeset -gA key_info
+key_info=(
+  'Control'      '\C-'
+  'ControlLeft'  '\e[1;5D \e[5D \e\e[D \eOd'
+  'ControlRight' '\e[1;5C \e[5C \e\e[C \eOc'
+  'Escape'       '\e'
+  'Meta'         '\M-'
+  'Backspace'    "^?"
+  'Delete'       "^[[3~"
+  'F1'           "$terminfo[kf1]"
+  'F2'           "$terminfo[kf2]"
+  'F3'           "$terminfo[kf3]"
+  'F4'           "$terminfo[kf4]"
+  'F5'           "$terminfo[kf5]"
+  'F6'           "$terminfo[kf6]"
+  'F7'           "$terminfo[kf7]"
+  'F8'           "$terminfo[kf8]"
+  'F9'           "$terminfo[kf9]"
+  'F10'          "$terminfo[kf10]"
+  'F11'          "$terminfo[kf11]"
+  'F12'          "$terminfo[kf12]"
+  'Insert'       "$terminfo[kich1]"
+  'Home'         "$terminfo[khome]"
+  'PageUp'       "$terminfo[kpp]"
+  'End'          "$terminfo[kend]"
+  'PageDown'     "$terminfo[knp]"
+  'Up'           "$terminfo[kcuu1]"
+  'Left'         "$terminfo[kcub1]"
+  'Down'         "$terminfo[kcud1]"
+  'Right'        "$terminfo[kcuf1]"
+  'BackTab'      "$terminfo[kcbt]"
+)
+autoload edit-command-line
+zle -N edit-command-line
+
+zsh-widget-noop () {}
+zle -N zsh-widget-noop
+
+# pressing <ESC> in normal mode is bogus: you need to press 'i' twice to enter insert mode again.
+# rebinding <ESC> in normal mode to something harmless solves the problem.
+bindkey -M vicmd '\e' zsh-widget-noop
+
+bindkey -M vicmd "$key_info[End]" end-of-line
+bindkey -M vicmd "$key_info[Home]" beginning-of-line
+bindkey -M vicmd "?" history-incremental-search-backward
+bindkey -M vicmd "/" history-incremental-search-forward
+bindkey -M vicmd "G" end-of-history
+bindkey -M vicmd "^R" history-incremental-search-backward
+bindkey -M vicmd "gg" beginning-of-history
+bindkey -M vicmd v edit-command-line
+bindkey -M viins "$key_info[Down]" history-search-forward
+bindkey -M viins "$key_info[End]" end-of-line
+bindkey -M viins "$key_info[Home]" beginning-of-line
+bindkey -M viins "$key_info[Up]" history-search-backward
+bindkey -M viins "^O" expand-cmd-path
+bindkey -M viins "^R" history-incremental-search-backward
+bindkey -M viins ' ' magic-space
+
+# vi-backward-delete-char does not go back across newlines.
+bindkey -M viins "^H" backward-delete-char
+bindkey -M viins "^?" backward-delete-char

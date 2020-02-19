@@ -50,9 +50,6 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " " Color scheme (terminal)
 set t_Co=256
 
-set background=dark
-colorscheme palenight
-
 "
 " " For plugins to load correctly
 " filetype plugin indent on
@@ -138,3 +135,10 @@ set listchars=tab:▸\ ,eol:¬
 " " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 "
+
+set background=dark
+colorscheme palenight
+
+if (has("termguicolors"))                                                               
+      set termguicolors                                                                     
+endif

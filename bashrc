@@ -32,9 +32,6 @@ if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
 # Show auto-completion list automatically, without double tab
 if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
-set -o vi
-bind '"jk":vi-movement-mode'
-
 alias ll='ls -alFh --color=auto'
 
 #######################################################
