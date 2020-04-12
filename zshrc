@@ -24,6 +24,8 @@ export l3="developer@10.1.129.83"
 export l4="developer@10.1.129.84"
 export l28="dt1@172.31.20.28"
 export l126="dt1@172.31.20.126"
+export tony="tony@10.111.136.59"
+export nlp31="nlp@172.31.20.31"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -173,7 +175,6 @@ key_info=(
   'Escape'       '\e'
   'Meta'         '\M-'
   'Backspace'    "^?"
-  'Delete'       "^[[3~"
   'F1'           "$terminfo[kf1]"
   'F2'           "$terminfo[kf2]"
   'F3'           "$terminfo[kf3]"
@@ -197,6 +198,10 @@ key_info=(
   'Right'        "$terminfo[kcuf1]"
   'BackTab'      "$terminfo[kcbt]"
 )
+
+# https://superuser.com/a/983018
+bindkey "\e[3~" delete-char
+
 autoload edit-command-line
 zle -N edit-command-line
 
