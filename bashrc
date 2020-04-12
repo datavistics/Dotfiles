@@ -161,3 +161,17 @@ alias ll='ls -alFh --color=auto'
 if [ -f "~/.local_bash" ]; then
   source ~/.local_bash
 fi
+
+export LESSCHARSET=utf-8
+
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if [ -d ~/.bash_completion.d  ]; then
+      for file in ~/.bash_completion.d/*; do
+        . $file
+      done
+fi
