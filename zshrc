@@ -27,6 +27,9 @@ export l126="dt1@172.31.20.126"
 export tony="tony@10.111.136.59"
 export nlp31="nlp@172.31.20.31"
 
+export l44="ssh -A deploy-dev@172.30.3.44"
+export l42="ssh -A stable@172.30.3.42"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -231,3 +234,6 @@ bindkey -M viins ' ' magic-space
 # vi-backward-delete-char does not go back across newlines.
 bindkey -M viins "^H" backward-delete-char
 bindkey -M viins "^?" backward-delete-char
+ssh-add -K ~/.ssh/id_rsa
+ssh-add -K ~/.ssh/rock-dev-keypair.pem
+ssh-add -K ~/.ssh/rock-pro.pem

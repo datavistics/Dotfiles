@@ -51,7 +51,8 @@ map <leader>n :action FileChooser.NewFolder<CR>
 map <leader>o :action FileStructurePopup<CR>
 map <leader>p :action ParameterInfo<CR>
 map <leader>q :action GuiDesigner.QuickJavadoc<CR>
-map <leader>r :action Replace<CR>
+map <leader>r :action RenameElement<CR>
+map <leader>R :action Replace<CR>
 map <leader>s :action SaveAll<CR>
 map <leader>S :action SelectInProjectView<CR>
 map <leader>t :action Vcs.UpdateProject<CR>
