@@ -8,8 +8,7 @@ set nocompatible
 filetype off
 "
 " Load plugins here (Vim Plug)
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
 " Theme
 Plug 'drewtempelmeyer/palenight.vim'
@@ -142,3 +141,4 @@ colorscheme palenight
 if (has("termguicolors"))                                                               
       set termguicolors                                                                     
 endif
+
