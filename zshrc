@@ -4,31 +4,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/derek/.oh-my-zsh"
 
-export s5="10.1.129.75"
-export s6="10.1.129.76"
-export s7="10.1.129.77"
-export s8="10.1.129.78"
-export s0="10.1.129.80"
-export s28="172.31.20.28"
-export s126="172.31.20.126"
-
-export l5="derek-thomas@10.1.129.75"
-export l6="derek-thomas@10.1.129.76"
-export l7="derek-thomas@10.1.129.77"
-export l8="derek-thomas@10.1.129.78"
-export l9="derek-thomas@10.1.129.79"
-export l0="derek-thomas@10.1.129.80"
-export l1="derek-thomas@10.1.129.81"
-export l2="derek-thomas@10.1.129.82"
-export l3="developer@10.1.129.83"
-export l4="developer@10.1.129.84"
-export l28="dt1@172.31.20.28"
-export l126="dt1@172.31.20.126"
 export tony="tony@10.111.136.59"
-export nlp31="nlp@172.31.20.31"
-
-export l44="ssh -A deploy-dev@172.30.3.44"
-export l42="ssh -A stable@172.30.3.42"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -148,7 +124,7 @@ RPS1='$(vi_mode_prompt_info)'
 RPS2=$RPS1
 
 # For iterm
-source ~/.iterm2_shell_integration.zsh
+# source ~/.iterm2_shell_integration.zsh
 
 PATH="$HOME/anaconda3/bin/:$PATH"
 alias ll='ls -alF'
@@ -234,6 +210,3 @@ bindkey -M viins ' ' magic-space
 # vi-backward-delete-char does not go back across newlines.
 bindkey -M viins "^H" backward-delete-char
 bindkey -M viins "^?" backward-delete-char
-ssh-add -K ~/.ssh/id_rsa
-ssh-add -K ~/.ssh/rock-dev-keypair.pem
-ssh-add -K ~/.ssh/rock-pro.pem
