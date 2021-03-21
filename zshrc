@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="~/.oh-my-zsh"
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -41,12 +41,12 @@ export KEYTIMEOUT=20
 
 # http://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/
 # Updates editor information when the keymap changes.
-function zle-keymap-select() {
-  zle reset-prompt
-  zle -R
-}
+# function zle-keymap-select() {
+#   zle reset-prompt
+#   zle -R
+# }
 
-zle -N zle-keymap-select
+# zle -N zle-keymap-select
 
 PATH="$HOME/anaconda3/bin/:$PATH"
 
@@ -86,11 +86,11 @@ key_info=(
 # https://superuser.com/a/983018
 bindkey "\e[3~" delete-char
 
-autoload edit-command-line
-zle -N edit-command-line
-
-zsh-widget-noop () {}
-zle -N zsh-widget-noop
+# autoload edit-command-line
+# zle -N edit-command-line
+#
+# zsh-widget-noop () {}
+# zle -N zsh-widget-noop
 
 # pressing <ESC> in normal mode is bogus: you need to press 'i' twice to enter insert mode again.
 # rebinding <ESC> in normal mode to something harmless solves the problem.
@@ -111,7 +111,7 @@ bindkey -M viins "$key_info[Up]" history-search-backward
 bindkey -M viins "^O" expand-cmd-path
 bindkey -M viins "^R" history-incremental-search-backward
 bindkey -M viins ' ' magic-space
-bindkey -M viins '^ ' autosuggest-accept
+bindkey -M viins '^;' autosuggest-accept
 
 
 # vi-backward-delete-char does not go back across newlines.
@@ -119,3 +119,18 @@ bindkey -M viins "^H" backward-delete-char
 bindkey -M viins "^?" backward-delete-char
 
 source ~/.fzf.zsh
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/derekthomas/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/derekthomas/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/derekthomas/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/derekthomas/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
