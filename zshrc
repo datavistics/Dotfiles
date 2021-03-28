@@ -118,6 +118,10 @@ bindkey -M viins '^;' autosuggest-accept
 bindkey -M viins "^H" backward-delete-char
 bindkey -M viins "^?" backward-delete-char
 
+# For autosuggest
+bindkey -M viins "^w" forward-word
+bindkey -M viins "^b" backward-word
+
 source ~/.fzf.zsh
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
