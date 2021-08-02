@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -138,3 +139,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# for file in ~/.ssh/*.pem; do ssh-add $file; done
+
+alias ll='ls -aFGl'
+alias jump='ssh -i ~/.ssh/data-colllector-04132018.pem ubuntu@10.71.1.131'
