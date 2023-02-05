@@ -49,7 +49,7 @@ export KEYTIMEOUT=20
 
 # zle -N zle-keymap-select
 
-PATH="$HOME/anaconda3/bin/:$PATH"
+# PATH="$HOME/anaconda3/bin/:$PATH"
 
 # https://github.com/mkomitee/dotfiles/blob/master/zsh/key-bindings.zsh
 typeset -gA key_info
@@ -126,14 +126,14 @@ bindkey -M viins "^b" backward-word
 source ~/.fzf.zsh
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/derekthomas/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/derekthomas/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/derekthomas/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/derekthomas/anaconda3/bin:$PATH"
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -142,4 +142,3 @@ unset __conda_setup
 # for file in ~/.ssh/*.pem; do ssh-add $file; done
 
 alias ll='ls -aFGl'
-alias jump='ssh -i ~/.ssh/data-colllector-04132018.pem ubuntu@10.71.1.131'
