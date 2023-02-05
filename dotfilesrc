@@ -1,8 +1,7 @@
 [dotfiles]
 repository = ~/Dotfiles
 
-externals = {
-    'custom.js': '~/.jupyter/custom'}
+externals = {'custom.js': '~/.jupyter/custom'}
 
 ignore = [
      '.idea/*',
