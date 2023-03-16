@@ -1,3 +1,6 @@
+" Set leader at the beginning
+let mapleader = " "
+
 " Escape with jk
 imap jk <Esc>
 
@@ -35,13 +38,12 @@ nnoremap <CR> :nohlsearch<cr>
 nnoremap Q @q
 
 " Leader Keys
-let mapleader = " "
 map <leader>a :action $SelectAll<CR>
 map <leader>b :action ToggleLineBreakpoint<CR>
 map <leader>c :action $Copy<CR>
 map <leader>d :action Debug<CR>
 map <leader>e <Plug>(easymotion-f)
-map <leader>f :action AceAction<CR>
+map <leader>f <Plug>(easymotion-jumptoanywhere)
 map <leader>F :action Find<CR>
 map <leader>g :action GotoLine<CR>
 map <leader>h :action TypeHierarchy<CR>
