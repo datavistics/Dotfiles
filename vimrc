@@ -45,7 +45,6 @@ nnoremap k gk
 syntax on                     " Turn on syntax highlighting
 set t_Co=256                  " Color scheme (terminal)
 set listchars=tab:▸\ ,eol:¬   " Visualize tabs and newlines
-colorscheme palenight         " Set color scheme
 
 " Comments for Documentation
 " This section includes detailed comments explaining why each setting or plugin is used.
@@ -65,7 +64,8 @@ set smartcase               " Override 'ignorecase' when search contains upperca
 
 " Color Scheme and Terminal Settings
 if (has("termguicolors"))
-  set termguicolors          " Enable true color support
+  "set termguicolors          " Enable true color support
 endif
+colorscheme palenight         " Set color scheme
 
 " End of Vim Configuration
