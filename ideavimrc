@@ -42,12 +42,14 @@ map <leader>a :action $SelectAll<CR>
 map <leader>b :action ToggleLineBreakpoint<CR>
 map <leader>c :action $Copy<CR>
 map <leader>d :action Debug<CR>
-map <leader>e <Plug>(easymotion-W)
-map <leader>f <Plug>(easymotion-F)
+map <leader>e <Plug>(easymotion-bd-w)
+map <leader>f <Plug>(easymotion-s2)
 map <leader>F :action Find<CR>
 map <leader>g :action GotoLine<CR>
 map <leader>h :action TypeHierarchy<CR>
 map <leader>i :action ImplementMethods<CR>
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
 map <leader>m :action EditorScrollToCenter<CR>
 map <leader>n :action FileChooser.NewFolder<CR>
 map <leader>o :action FileStructurePopup<CR>
