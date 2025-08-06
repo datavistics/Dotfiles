@@ -175,3 +175,9 @@ if [ -d ~/.bash_completion.d  ]; then
         . $file
       done
 fi
+
+# Aliases for uv integration to manage Python environments and dependencies
+# uvinit: create a virtual environment with uv and activate it
+alias uvinit='uv venv && source .venv/bin/activate'
+# uvsync: compile requirements and sync dependencies using uv (requires requirements.in)
+alias uvsync='uv pip compile requirements.in --quiet --output-file requirements.txt && uv pip sync requirements.txt'
