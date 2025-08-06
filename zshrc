@@ -123,6 +123,28 @@ bindkey -M viins "^?" backward-delete-char
 bindkey -M viins "^w" forward-word
 bindkey -M viins "^b" backward-word
 
+
+### ---   Fix key-binding errors   --- ###
+# helper: only bind when the sequence is non-empty
+_bind_if_set() { [[ -n $1 ]] && bindkey "$@" ; }
+
+# harmless ESC in vicmd
+zsh-widget-noop() { : }
+zle -N zsh-widget-noop
+_bind_if_set '\e'         zsh-widget-noop        # replaces the old bindkey
+
+# End / Home in vicmd
+_bind_if_set "$key_info[End]"  end-of-line
+_bind_if_set "$key_info[Home]" beginning-of-line
+# …repeat for the other key_info bindings…
+
+### ---   Gitstatus self-healing   --- ###
+# make sure the helper is automatically rebuilt if missing
+if [[ ! -x ~/.cache/gitstatus/gitstatusd-* ]]; then
+  rm -rf ~/.cache/gitstatus
+fi
+
+
 source ~/.fzf.zsh
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -142,3 +164,12 @@ unset __conda_setup
 # for file in ~/.ssh/*.pem; do ssh-add $file; done
 
 alias ll='ls -aFGl'
+
+# bun
+export BUN_INSTALL="$HOME/Library/Application Support/reflex/bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+source /Users/derekthomas/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+# Added by Windsurf
+export PATH="/Users/derekthomas/.codeium/windsurf/bin:$PATH"

@@ -1,0 +1,8 @@
+# ---- History ----
+export HISTFILESIZE=10000
+export HISTSIZE=500
+export HISTCONTROL=erasedups:ignoredups:ignorespace
+
+# Case-insensitive completion & single-tab listing
+bind 'set completion-ignore-case on'
+bind 'set show-all-if-ambiguous on'

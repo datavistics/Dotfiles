@@ -1,0 +1,44 @@
+############################################
+# Git + venv + error single-line prompt
+############################################
+
+PROMPT_DIRTRIM=2          # trim deep paths to …/leaf
+
+_prompt_git_venv() {
+  local EXIT=$?                            # capture exit status
+  local RESET="\[\e[0m\]"                  # reset colour
+
+  # ── colours ────────────────────────────
+  local C_USER="\[\e[32m\]"     # green
+  local C_HOST="\[\e[32m\]"
+  local C_PATH="\[\e[94m\]"     # bright blue
+  local C_GIT="\[\e[33m\]"      # yellow
+  local C_ENV="\[\e[35m\]"      # magenta  ← venv colour
+  local C_ERR="\[\e[31m\]"      # red
+
+  # ── Python venv / Conda env ────────────
+  local VENV=""
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    VENV="(${C_ENV}$(basename \"$VIRTUAL_ENV\")${RESET}) "
+  elif [[ -n "$CONDA_DEFAULT_ENV" ]]; then
+    VENV="(${C_ENV}$CONDA_DEFAULT_ENV${RESET}) "
+  fi
+
+  # ── Git branch (fallback if helper absent) ─
+  local BRANCH=""
+  if command -v __git_ps1 >/dev/null 2>&1; then
+    __git_ps1 BRANCH " (%s)"
+  else
+    BRANCH=$(git branch --show-current 2>/dev/null)
+    [[ $BRANCH ]] && BRANCH=" (${BRANCH})"
+  fi
+
+  # ── Build prompt ───────────────────────
+  PS1="${C_USER}\u${RESET}@${C_HOST}\h${RESET}:"
+  PS1+="$VENV"                              # show venv if any
+  PS1+="${C_PATH}\w${RESET}${C_GIT}${BRANCH}${RESET}"
+  [[ $EXIT != 0 ]] && PS1+=" ${C_ERR}[$EXIT]${RESET}"
+  PS1+=" \$ "                               # root gets # automatically
+}
+
+PROMPT_COMMAND=_prompt_git_venv
