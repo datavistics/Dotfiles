@@ -59,4 +59,39 @@ to create and populate your environment.  Whenever you modify `requirements.in`,
 
 - Consider aliasing `pip` to `python -m pip` or `uv pip` only if you are comfortable with uv’s differences from pip.  The uv `pip` commands aim to be compatible but are not identical to pip【752188399402514†L214-L219】.
 - To update uv itself, run `uv self update`【498235778560565†L251-L258】.
-- See the [official uv documentation](https://docs.astral.sh/uv) for more details on projects, tools and Python version management.
+See the [official uv documentation](https://docs.astral.sh/uv/) for more details on projects, tools and Python version management.
+  
+## Installing these dotfiles
+
+1. **Clone this repository** to your machine:
+
+   ```sh
+   git clone https://github.com/datavistics/Dotfiles.git
+   ```
+
+2. **Back up existing configuration files** in your home directory (e.g., `~/.bashrc`, `~/.zshrc`) to avoid overwriting them.
+
+3. **Copy or symlink** the files from this repository into your home directory. For example:
+
+   ```sh
+   # Copy files
+   cp bashrc ~/.bashrc
+   cp zshrc ~/.zshrc
+   cp dotfilesrc ~/.dotfilesrc
+
+   # Or create symlinks so updates to this repository propagate automatically
+   ln -s $(pwd)/bashrc ~/.bashrc
+   ln -s $(pwd)/zshrc ~/.zshrc
+   ln -s $(pwd)/dotfilesrc ~/.dotfilesrc
+   ```
+
+   Adjust the commands for any additional dotfiles (such as `.gitconfig` or `custom.js`) you wish to use.
+
+4. **Reload your shell** to apply the new configuration:
+
+   ```sh
+   source ~/.bashrc    # for Bash users
+   source ~/.zshrc     # for Zsh users
+   ```
+
+These dotfiles are designed for Linux/macOS systems and include helpful aliases, prompt customisations, fzf integration and more. Feel free to tailor them to your needs.
