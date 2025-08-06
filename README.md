@@ -64,6 +64,8 @@ See the [official uv documentation](https://docs.astral.sh/uv/) for more details
 ## Installing these dotfiles
 
 1. **Clone this repository** to your machine:
+**Note:** These dotfiles are plain configuration files for your shell and editor. You do **not** need to install the Python [dotfiles](https://pypi.org/project/dotfiles/) package to use them. Simply copy or symlink the files as described below.
+
 
    ```sh
    git clone https://github.com/datavistics/Dotfiles.git
