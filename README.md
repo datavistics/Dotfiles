@@ -81,9 +81,6 @@ dotfiles --version
 git clone https://github.com/datavistics/Dotfiles.git ~/Dotfiles
 cd ~/Dotfiles
 
-# Tell dotfiles where the repo lives (one‑time)
-export DOTFILES_DIR="$HOME/.dotfiles"
-
 # Symlink everything that is tracked under ~/.dotfiles
 dotfiles --sync   # or just `dotfiles` (sync is default)
 ```
