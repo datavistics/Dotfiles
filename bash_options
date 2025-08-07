@@ -1,7 +1,9 @@
 # ---- History ----
-export HISTFILESIZE=10000
-export HISTSIZE=500
+export HISTFILESIZE=20000
+export HISTSIZE=10000
 export HISTCONTROL=erasedups:ignoredups:ignorespace
+set -o history            # just to be explicit
+
 
 # Case-insensitive completion & single-tab listing
 bind 'set completion-ignore-case on'

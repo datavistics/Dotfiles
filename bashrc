@@ -12,6 +12,9 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
+# --- fzf ---
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # --- Shell options ---
 set -o vi
 bind '"jk":vi-movement-mode'
