@@ -13,4 +13,7 @@ ignore = [
      '..dotfilesrc',
      '.git',
      '.gitignore',
-     '*.swp']
+     '*.swp',
+     'install.sh',
+     'CHEATSHEET.md',
+     'README.md']
