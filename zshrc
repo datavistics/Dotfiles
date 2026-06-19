@@ -136,7 +136,6 @@ _bind_if_set '\e'         zsh-widget-noop        # replaces the old bindkey
 # End / Home in vicmd
 _bind_if_set "$key_info[End]"  end-of-line
 _bind_if_set "$key_info[Home]" beginning-of-line
-# …repeat for the other key_info bindings…
 
 ### ---   Gitstatus self-healing   --- ###
 # make sure the helper is automatically rebuilt if missing
@@ -144,8 +143,7 @@ if [[ ! -x ~/.cache/gitstatus/gitstatusd-* ]]; then
   rm -rf ~/.cache/gitstatus
 fi
 
-
-source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
