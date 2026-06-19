@@ -2,75 +2,73 @@
 set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "$0")" && pwd)"
-
-link() {
-  local src="$DOTFILES/$1"
-  local dst="$HOME/$2"
-  mkdir -p "$(dirname "$dst")"
-  if [ -e "$dst" ] && [ ! -L "$dst" ]; then
-    echo "  backing up $dst -> $dst.bak"
-    mv "$dst" "$dst.bak"
-  fi
-  ln -sfn "$src" "$dst"
-  echo "  linked $dst"
-}
-
-echo "==> Linking dotfiles from $DOTFILES..."
-link zshrc        .zshrc
-link vimrc        .vimrc
-link bashrc       .bashrc
-link tmux.conf    .tmux.conf
-link ideavimrc    .ideavimrc
-link p10k.zsh     .p10k.zsh
-link custom.js    .jupyter/custom/custom.js
-
-echo ""
-echo "==> Installing oh-my-zsh..."
-if [ ! -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
-  KEEP_ZSHRC=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-else
-  echo "  already installed"
-fi
-
-echo ""
-echo "==> Installing zsh plugins..."
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 
+step() { echo ""; echo "==> $*"; }
+ok()   { echo "  already present, skipping"; }
+
+# ── dotfiles tool ────────────────────────────────────────────────────────────
+step "Installing dotfiles tool..."
+if ! command -v dotfiles &>/dev/null; then
+  pip install dotfiles
+else
+  ok
+fi
+
+# ── oh-my-zsh ────────────────────────────────────────────────────────────────
+step "Installing oh-my-zsh..."
+if [ ! -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
+  KEEP_ZSHRC=yes RUNZSH=no \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+  ok
+fi
+
+# ── zsh plugins & theme ──────────────────────────────────────────────────────
+step "Installing zsh-autosuggestions..."
 if [ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
   git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions \
     "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
-  echo "  zsh-autosuggestions installed"
 else
-  echo "  zsh-autosuggestions already present"
+  ok
 fi
 
-echo ""
-echo "==> Installing powerlevel10k theme..."
+step "Installing powerlevel10k..."
 if [ ! -d "$ZSH_CUSTOM/themes/powerlevel10k" ]; then
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
     "$ZSH_CUSTOM/themes/powerlevel10k"
-  echo "  powerlevel10k installed"
 else
-  echo "  powerlevel10k already present"
+  ok
 fi
 
-echo ""
-echo "==> Installing vim-plug..."
+# ── vim-plug ─────────────────────────────────────────────────────────────────
+step "Installing vim-plug..."
 if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
   curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  echo "  vim-plug installed"
 else
-  echo "  vim-plug already present"
+  ok
 fi
 
+# ── symlinks via dotfiles tool ───────────────────────────────────────────────
+step "Syncing dotfile symlinks..."
+dotfiles --repo "$DOTFILES" --sync --force
+
+# ── machine-specific config ──────────────────────────────────────────────────
 if [ ! -f "$HOME/.zshrc.local" ]; then
   echo ""
-  echo "NOTE: Create ~/.zshrc.local for machine-specific config (conda, PATH tweaks, etc.)"
-  echo "      It is sourced at the end of ~/.zshrc but is not tracked in git."
+  echo "NOTE: ~/.zshrc.local not found."
+  echo "      Create it for machine-specific config (conda, PATH tweaks, etc.)."
+  echo "      It is sourced at the end of ~/.zshrc and is not tracked in git."
+  echo ""
+  echo "      Example contents:"
+  echo "        export PATH=\"/opt/homebrew/bin:\$PATH\""
+  echo "        # conda initialize block goes here"
 fi
 
+# ── post-install ─────────────────────────────────────────────────────────────
 echo ""
-echo "==> Done!"
-echo "    Open vim and run :PlugInstall to install plugins."
-echo "    Run 'p10k configure' to customize your prompt."
+echo "==> Done! Next steps:"
+echo "    1. Open a new shell (exec zsh)"
+echo "    2. Open vim and run :PlugInstall"
+echo "    3. If prompt looks wrong, run: p10k configure"

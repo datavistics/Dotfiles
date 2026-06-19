@@ -16,4 +16,5 @@ ignore = [
      '*.swp',
      'install.sh',
      'CHEATSHEET.md',
-     'README.md']
+     'README.md',
+     'agents.md']
