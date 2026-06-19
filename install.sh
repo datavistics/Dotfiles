@@ -33,5 +33,11 @@ else
   echo "  vim-plug already present"
 fi
 
+if [ ! -f "$HOME/.zshrc.local" ]; then
+  echo ""
+  echo "NOTE: Create ~/.zshrc.local for machine-specific config (conda, PATH tweaks, etc.)"
+  echo "      It is sourced at the end of ~/.zshrc but is not tracked in git."
+fi
+
 echo ""
 echo "Done! Open vim and run :PlugInstall to install plugins."

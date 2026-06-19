@@ -28,7 +28,6 @@ plugins=(
   zsh-autosuggestions
   fzf
   vi-mode
-  fasd
 )
 
 [ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
@@ -144,30 +143,8 @@ if [[ ! -x ~/.cache/gitstatus/gitstatusd-* ]]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# for file in ~/.ssh/*.pem; do ssh-add $file; done
 
 alias ll='ls -aFGl'
 
-# bun
-export BUN_INSTALL="$HOME/Library/Application Support/reflex/bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-source /Users/derekthomas/.docker/init-zsh.sh || true # Added by Docker Desktop
-
-# Added by Windsurf
-export PATH="/Users/derekthomas/.codeium/windsurf/bin:$PATH"
+# Machine-specific config (not tracked in git)
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
