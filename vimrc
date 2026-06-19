@@ -14,7 +14,7 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
+  \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'robbles/logstash.vim'
 Plug 'tpope/vim-surround'
@@ -88,4 +88,4 @@ if (has("termguicolors"))
   set termguicolors
 endif
 set background=dark
-colorscheme palenight
+silent! colorscheme palenight
