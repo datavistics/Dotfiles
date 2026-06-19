@@ -83,9 +83,23 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 set listchars=tab:▸\ ,eol:¬
 map <leader>l :set list!<CR>
 
+" Warn if plugins are missing (i.e. :PlugInstall hasn't been run)
+if empty(glob('~/.vim/plugged'))
+  autocmd VimEnter * echohl WarningMsg
+    \ | echom "vim plugins not installed — run :PlugInstall"
+    \ | echohl None
+endif
+
 " Colors — termguicolors must be set before colorscheme
 if (has("termguicolors"))
   set termguicolors
 endif
 set background=dark
-silent! colorscheme palenight
+try
+  colorscheme palenight
+catch /E185/
+  colorscheme default
+  autocmd VimEnter * echohl WarningMsg
+    \ | echom "Colorscheme 'palenight' not found — run :PlugInstall"
+    \ | echohl None
+endtry
